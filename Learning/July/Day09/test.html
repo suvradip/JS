@@ -6,14 +6,14 @@
 <body>
 <script type="text/javascript">
 
-var b;	
+var b="";	
 
 
 
 function check(val)
 {
 document.getElementById("render").innerHTML="";
-document.getElementById('enter').value="";
+//document.getElementById('enter').value="";
 
 a=val;
 
@@ -22,9 +22,9 @@ a=val;
 	document.getElementById("render").innerHTML="Not a number";
 	document.getElementById('enter').value="";
 
-	if(b==0)
-	document.getElementById('enter').value ="";
-	else
+	// if(b==0)
+	// document.getElementById('enter').value ="";
+	// else
 	document.getElementById('enter').value =b;
 	
 
@@ -34,9 +34,9 @@ a=val;
 	{
 	b=  a.value;
 
-		if(b==0)
-	document.getElementById('enter').value ="";
-	else
+	// 	if(b==0)
+	// document.getElementById('enter').value ="";
+	// else
 	document.getElementById('enter').value =b;
 	}
 
@@ -45,19 +45,10 @@ a=val;
 }
 
 
-function c(a,b)
-{
-
-	return ((a>b) ? a : b);
-}
-
-
-document.write( c(5,9));
-
 </script>
 
-<div id="txt"><input type="text" id="enter"   onkeydown="check(this);" onkeyup="check(this);" /></div>
-<div id="butn"><button type="button" id="bt" >Click Me!</button></div>
+<div><input type="text" id="enter"   onkeyup="javascript:check(this);" /></div>
+
 <div id="render"></div>
 </body>
 </html>
