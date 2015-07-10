@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+var b;	
+
+
+
+function check(val)
+{
+document.getElementById("render").innerHTML="";
+document.getElementById('enter').value="";
+
+a=val;
+
+	if (isNaN(val.value)) 
+	{
+	document.getElementById("render").innerHTML="Not a number";
+	document.getElementById('enter').value="";
+
+	if(b==0)
+	document.getElementById('enter').value ="";
+	else
+	document.getElementById('enter').value =b;
+	
+
+		
+	}
+	else
+	{
+	b=  a.value;
+
+		if(b==0)
+	document.getElementById('enter').value ="";
+	else
+	document.getElementById('enter').value =b;
+	}
+
+
+	//document.getElementById('enter').value =b.value;		
+}
+
+
+function c(a,b)
+{
+
+	return ((a>b) ? a : b);
+}
+
+
+document.write( c(5,9));
+
+</script>
+
+<div id="txt"><input type="text" id="enter"   onkeydown="check(this);" onkeyup="check(this);" /></div>
+<div id="butn"><button type="button" id="bt" >Click Me!</button></div>
+<div id="render"></div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS/Learning/July/Day09</title>
+	<script>
+
+	function PF(a)
+	{
+	var v=document.getElementById("render").innerHTML = a;
+		//v.innerHTML = a
+	}
+
+
+//document.getElementById('button').innerHTML = "";
+
+function AccessingObjectsProperties()
+
+{
+	document.getElementById('render').innerHTML="hello";
+	
+		var Book=
+		{
+
+		book_id: "001",
+		book_name: "java",
+		book_author: {
+				fname: "FirstName",
+				lname:"LastName"
+			 },
+		book_amount: function(a,b)
+			{
+				return (a+b);
+			}	
+		}
+
+
+		PF(Book.book_name + " " + Book.book_amount(50,5));
+
+		/*document.write(Book.book_name);
+
+		document.write(Book.book_amount(50,5));
+
+
+		Book.book_name="c++";
+		document.write(Book.book_name);
+		document.write(Book.book_author.fname);*/
+		
+}
+
+
+function ConstructorFunctions()
+{
+
+		function mycons()
+		{
+
+			this.animal1='Tiger',
+			this.animal2='Cat',
+			this.where= function()
+						{
+							return 'In Constructor Functions..!!!';
+						}
+		}
+
+
+		function mycons(xyz)
+		{
+
+			this.animal1='Tiger',
+			this.animal2=xyz,
+			this.where= function()
+						{
+							return 'In parameterized Constructor  Functions..!!!';
+						}
+		}
+
+
+var c=new mycons();
+PF( c.animal2 + " " + c.where() );
+
+}
+
+
+function PassingObject()
+{
+
+	function pobj()
+	{
+
+		this.item=100;
+	}
+		pobj.prototype=
+		{
+			prototypeItem:"i am from prototype"
+		}
+
+
+	function test()
+	{
+
+		this.sub=10;
+
+	}	
+
+	
+	//var b=a;
+	
+	pobj.prototype=new test();
+	var a=new pobj();
+	pobj.prototype.add="50";
+	pobj.prototype.constructor=pobj;
+
+	
+	PF( a.add - a.sub);
+}
+
+
+function add_args(a,b,c)
+{
+
+	PF(arguments[0] + arguments[1] + arguments[2] );
+}
+
+
+
+function methododfunction()
+{
+
+			var some_obj = 
+			{
+		  		name: 'Ninja',
+		  		say: function(who)
+		  			{
+		    		return 'Haya ' + who + ', I am a ' + this.name;
+		  			}
+			}
+
+			var my_obj = {name: 'Scripting guru'};
+
+			PF(some_obj.say.call(my_obj, 'Dude'));
+}
+
+
+</script>
+</head>
+<body>
+
+
+
+
+<div id="render"></div>
+
+<br>
+<br>
+
+
+<div><input type="submit" value="Accessing Objects Properties" onclick="AccessingObjectsProperties();" /></div>
+<div><input type="submit" value="Constructor Functions" onclick="ConstructorFunctions();" /></div>
+<div><input type="submit" value="Passing Object Functions" onclick="PassingObject();" /></div>
+<div><input type="submit" value="Add Function Arguments" onclick="add_args(10,20,30);" /></div>
+<div><input type="submit" value="MethododFunction" onclick="methododfunction();" /></div>
+</body>
+</html>
