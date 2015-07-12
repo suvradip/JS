@@ -1,0 +1,90 @@
+<html>
+<body>
+
+<script> 
+
+
+
+/*var y=(function a()
+		{
+			var x={
+					a:5,
+					b:6,
+					c:7	
+				  } 
+
+		return  {
+					g:function()
+							{
+								return x.a;
+							},
+					s:function(a)
+							{
+								x.a=a;
+	  					}		
+				};
+		})();
+*/
+
+
+
+
+var v=(function node()
+		{
+
+		var parent;
+		var childs=[];
+
+		return{
+				insertChild:function(p,c)
+				{
+					var f=1;
+
+
+
+					if(childs.length==0)
+					{
+						//console.log("parent determine");
+						parent=p;
+						childs.push(parent);
+					}	
+
+					for(var i=0;i<childs.length;i++)
+					{
+						if(p==childs[i] && childs[i+1]!=null )
+						{
+							
+							f=0;
+						}
+						
+					}	
+
+					if(f!=0)
+					{
+
+						childs.push(c);
+					}else
+					{
+						console.log(c + " has a parent i.e, " + p);	
+					}
+
+					
+					
+				},
+
+				getChilds:function()
+				{
+					return childs;
+				},
+
+				getParentNode:function()
+				{
+					return parent;
+				}
+		}
+		})();
+
+</script>
+
+</body>
+</html>
