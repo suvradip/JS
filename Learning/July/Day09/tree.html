@@ -1,90 +1,132 @@
+<!DOCTYPE html>
 <html>
+<head>
+	<title></title>
+</head>
 <body>
 
-<script> 
+<script type="text/javascript">
+	
+console.log("use : v.insertNode(parent,child)");
+console.log("use : v.getNode(parent,child)");
 
 
 
-/*var y=(function a()
+function node(name,parent,c)
+{
+
+	this.name=name;
+	this.parent=parent;
+	this.child=[];
+
+	if(c!=null)
+		this.child.push(c);
+}
+
+
+var v=(function ()
 		{
-			var x={
-					a:5,
-					b:6,
-					c:7	
-				  } 
+				var mynode=[];
 
-		return  {
-					g:function()
+				return {
+						insertNode:function(key,c)
 							{
-								return x.a;
+
+								var index=0;
+								var c_index=0;
+								var p_index=0;
+								var f1=false; 
+								var f2=false;
+
+								for(var i=0;i<mynode.length;i++)
+								{
+									
+									if(mynode[i].name==key)
+									{
+										//index=i;
+										p_index=i;
+										f1=true; f2=false;
+
+										console.log("loop if 1 condition");
+									}
+									
+									if(mynode[i].name==c)
+									{
+										c_index=i;
+										f1=false; f2=true;
+
+										console.log("loop 2 condition");
+									}
+
+
+
+
+								}	//end of for loop
+
+
+								if(!f1 && !f2) // F F
+								{
+									mynode.push(new node(key,null,c));
+									mynode.push(new node(c,key,null));
+
+									console.log("1 condition");
+								}	
+
+								if(f1 && !f2) //T F
+									{
+									mynode[p_index].child.push(c);
+									mynode.push(new node(c,key,null));
+									console.log("2 condition");
+									}
+
+
+								if(!f1 && f2) // F T
+								{
+									if(mynode[c_index].parent==null)
+									{	
+									mynode[p_index].child.push(c);
+									mynode[c_index].parent=key;
+									console.log("3.1 condition");
+									}
+									
+
+
+								}	
+
+
+								
+								
 							},
-					s:function(a)
-							{
-								x.a=a;
-	  					}		
-				};
-		})();
-*/
 
 
+							getNode: function(key)
+									{
+										var n,p,c=[];
+										for(var i=0; i<mynode.length;i++)
+										{
+											if (mynode[i].name==key)
+											 {
+											 	n=mynode[i].name;
+											 	p=mynode[i].parent;
+											 	c=mynode[i].child;	
+											 };	
+										}	
 
+										console.log("Name of node : " +n +"\n");
+										console.log("Name of Parent : "+p +"\n");
+										console.log("Childs : "+ c +"\n") ;
+										return mynode;
+									}
 
-var v=(function node()
-		{
-
-		var parent;
-		var childs=[];
-
-		return{
-				insertChild:function(p,c)
-				{
-					var f=1;
-
-
-
-					if(childs.length==0)
-					{
-						//console.log("parent determine");
-						parent=p;
-						childs.push(parent);
-					}	
-
-					for(var i=0;i<childs.length;i++)
-					{
-						if(p==childs[i] && childs[i+1]!=null )
-						{
-							
-							f=0;
 						}
-						
-					}	
 
-					if(f!=0)
-					{
-
-						childs.push(c);
-					}else
-					{
-						console.log(c + " has a parent i.e, " + p);	
-					}
-
-					
-					
-				},
-
-				getChilds:function()
-				{
-					return childs;
-				},
-
-				getParentNode:function()
-				{
-					return parent;
-				}
-		}
 		})();
+
+
+
 
 </script>
+
 
 </body>
 </html>
